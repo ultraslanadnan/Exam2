@@ -1,0 +1,16 @@
+﻿@model Exam.Models.yazilar
+@{
+    ViewData["Title"] = "liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    if (TempData["msg"] != null)
+    {
+        <script>
+            alert('@TempData["msg"]')
+        </script>
+    }
+}
+

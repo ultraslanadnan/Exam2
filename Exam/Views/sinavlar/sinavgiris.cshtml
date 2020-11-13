@@ -1,0 +1,269 @@
+﻿@model Exam.Models.sinavlar
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        function selectedOne(item)
+        {   
+            var x = 0;
+            var one = document.getElementsByClassName("one");
+            for (var i = 0; i < one.length; i++) {
+                var item2 = one[i];
+
+                item2.classList.remove("selected");
+               
+                if (item2.classList.contains("true") || item2.classList.contains("false")) {
+                    x = x+1;
+                }
+                
+            }
+            if (x != 1) {
+                item.classList.add("selected");
+            }
+         
+       
+           
+         
+            
+        }
+        function selectedTwo(item) {
+            var x = 0;
+            var one = document.getElementsByClassName("two");
+            for (var i = 0; i < one.length; i++) {
+                var item2 = one[i];
+                item2.classList.remove("selected");
+                if (item2.classList.contains("true") || item2.classList.contains("false")) {
+                    x = x + 1;
+                }
+            }
+            if (x != 1) {
+                item.classList.add("selected");
+            }
+
+        }
+        function selectedThree(item) {
+            var x = 0;
+            var one = document.getElementsByClassName("three");
+            for (var i = 0; i < one.length; i++) {
+                var item2 = one[i];
+                item2.classList.remove("selected");
+                if (item2.classList.contains("true") || item2.classList.contains("false") ) {
+                    x = x + 1;
+                }
+            }
+            if (x != 1) {
+                item.classList.add("selected");
+            }
+
+
+        }
+        function selectedFour(item) {
+            var x = 0;
+            var one = document.getElementsByClassName("four");
+            for (var i = 0; i < one.length; i++) {
+                var item2 = one[i];
+                item2.classList.remove("selected");
+                if (item2.classList.contains("true") || item2.classList.contains("false")) {
+                    x = x + 1;
+                }
+            }
+        
+            if (x != 1) {
+                item.classList.add("selected");
+            }
+            
+            
+                
+            
+            
+
+
+        }
+    </script>
+    <script>
+        function Check() {
+            var x = document.querySelectorAll(".selected");
+            var cevap = document.querySelectorAll(".cevap");
+            var truesayisi = document.querySelectorAll(".true").length;
+            var falsesayisi = document.querySelectorAll(".false").length;
+            var total = truesayisi + falsesayisi;
+            if (x.length != 4)  {
+                if (total == 4) {
+
+                }
+                else {
+                    swal("Tüm soruları cevaplamadınız", {
+                        icon: "info",
+
+                        //timer: 3000,
+
+                    });
+                }
+                }
+    
+            else {
+                for (var i = 0; i < x.length; i++) {
+
+                    var items = x[i];
+
+                    items.classList.remove("selected");
+
+                    if (items.classList.contains("true")) {
+
+                    }
+                    else {
+                        //items.classList.add("true");
+                        //x[3].classList.add("true");
+
+                        if (cevap[i].innerText === items.innerText.substring(0, 1)) {
+
+                            items.classList.add("true");
+                        }
+
+                        else {
+                            items.classList.add("false");
+                        }
+
+
+
+                    }
+
+                }
+            }
+
+
+
+        }
+
+        //one.i.substring(1,1);
+    </script>
+    <style>
+        .true {
+            background-color: green !important;
+        }
+        .false {
+            background-color: red !important;
+        }
+        .selected{
+            background-color:gray;
+        }
+        a:hover{
+            cursor:pointer;
+        }
+      
+    </style>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-control" style="text-align:center; height: auto !important; font-weight:bold; border:none;">@Html.DisplayFor(model => model.baslik)</label>
+                </div>
+                <div class="form-group" >
+                    <label style="height: auto !important;" class="form-control">@Html.DisplayFor(model => model.aciklama)</label>
+                </div>
+
+            </div>
+           
+        </div>
+        <div class="row">
+
+            <div class="col-6" style="margin-bottom:10px;">
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-control" style="height: auto !important; border:none !important">1) @Html.DisplayFor(model => model.soru1)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a onclick="selectedOne(this);" class="form-control one" style="height: auto !important;">A) @Html.DisplayFor(model => model.secenekA)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedOne(this);" class="form-control one" style="height: auto !important;">B) @Html.DisplayFor(model => model.secenekB)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedOne(this);" class="form-control one" style="height: auto !important;">C) @Html.DisplayFor(model => model.secenekC)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedOne(this);" class="form-control one" style="height: auto !important;">D) @Html.DisplayFor(model => model.secenekD)</a>
+                    </div>
+                   
+                    <label id="cevap1" class="cevap" style="display:none;">@Html.DisplayFor(model => model.Cevap)</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-control" style="height: auto !important; border:none !important">2) @Html.DisplayFor(model => model.soru2)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a onclick="selectedTwo(this);" class="form-control two" style="height: auto !important;">A) @Html.DisplayFor(model => model.secenek2A)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedTwo(this);" class="form-control two" style="height: auto !important;">B) @Html.DisplayFor(model => model.secenek2B)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedTwo(this);" class="form-control two" style="height: auto !important;">C) @Html.DisplayFor(model => model.secenek2C)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedTwo(this);" class="form-control two" style="height: auto !important;">D) @Html.DisplayFor(model => model.secenek2D)</a>
+                    </div>
+                    <label id="cevap2" class="cevap" style="display:none;">@Html.DisplayFor(model => model.Cevap2)</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-control" style="height: auto !important;  border:none !important">3) @Html.DisplayFor(model => model.soru3)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a onclick="selectedThree(this);" class="form-control three" style="height: auto !important;">A) @Html.DisplayFor(model => model.secenek3A)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedThree(this);" class="form-control three" style="height: auto !important;">B) @Html.DisplayFor(model => model.secenek3B)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedThree(this);" class="form-control three" style="height: auto !important;">C) @Html.DisplayFor(model => model.secenek3C)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedThree(this);" class="form-control three" style="height: auto !important;">D) @Html.DisplayFor(model => model.secenek3D)</a>
+                    </div>
+                    <label id="cevap3" class="cevap" style="display:none;">@Html.DisplayFor(model => model.Cevap3)</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-control" style="height: auto !important;  border:none !important">4) @Html.DisplayFor(model => model.soru4)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a onclick="selectedFour(this);" class="form-control four" style="height: auto !important; ">A) @Html.DisplayFor(model => model.secenek4A)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedFour(this);" class="form-control four" style="height: auto !important; ">B) @Html.DisplayFor(model => model.secenek4B)</a>
+                    </div>
+                    <div class="col-12">
+                        <a onclick="selectedFour(this);" class="form-control four" style="height: auto !important; ">C) @Html.DisplayFor(model => model.secenek4C)</a>
+                    </div>
+                    <div class="col-12">
+
+
+                        <a onclick="selectedFour(this);" class="form-control four" style="height: auto !important; ">D) @Html.DisplayFor(model => model.secenek4D)</a>
+
+
+                    </div>
+                </div>
+                <label id="cevap4" class="cevap" style="display:none;">@Html.DisplayFor(model => model.Cevap4)</label>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-4 offset-4" style="margin-top:15px;">
+                <a class="btn btn-info" style="text-align:center; display:block" onclick="Check();">Sınavı Tamamla</a>
+            </div>
+            
+        </div>
+
+    </div>

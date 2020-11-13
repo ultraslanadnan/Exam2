@@ -1,0 +1,156 @@
+﻿@model Exam.Models.sinavlar
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>sinavlar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="soru1" class="control-label"></label>
+                <input asp-for="soru1" class="form-control" />
+                <span asp-validation-for="soru1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenekA" class="control-label"></label>
+                <input asp-for="secenekA" class="form-control" />
+                <span asp-validation-for="secenekA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenekB" class="control-label"></label>
+                <input asp-for="secenekB" class="form-control" />
+                <span asp-validation-for="secenekB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenekC" class="control-label"></label>
+                <input asp-for="secenekC" class="form-control" />
+                <span asp-validation-for="secenekC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenekD" class="control-label"></label>
+                <input asp-for="secenekD" class="form-control" />
+                <span asp-validation-for="secenekD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cevap" class="control-label"></label>
+                <input asp-for="Cevap" class="form-control" />
+                <span asp-validation-for="Cevap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soru2" class="control-label"></label>
+                <input asp-for="soru2" class="form-control" />
+                <span asp-validation-for="soru2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek2A" class="control-label"></label>
+                <input asp-for="secenek2A" class="form-control" />
+                <span asp-validation-for="secenek2A" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek2B" class="control-label"></label>
+                <input asp-for="secenek2B" class="form-control" />
+                <span asp-validation-for="secenek2B" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek2C" class="control-label"></label>
+                <input asp-for="secenek2C" class="form-control" />
+                <span asp-validation-for="secenek2C" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek2D" class="control-label"></label>
+                <input asp-for="secenek2D" class="form-control" />
+                <span asp-validation-for="secenek2D" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cevap2" class="control-label"></label>
+                <input asp-for="Cevap2" class="form-control" />
+                <span asp-validation-for="Cevap2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soru3" class="control-label"></label>
+                <input asp-for="soru3" class="form-control" />
+                <span asp-validation-for="soru3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek3A" class="control-label"></label>
+                <input asp-for="secenek3A" class="form-control" />
+                <span asp-validation-for="secenek3A" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek3B" class="control-label"></label>
+                <input asp-for="secenek3B" class="form-control" />
+                <span asp-validation-for="secenek3B" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek3C" class="control-label"></label>
+                <input asp-for="secenek3C" class="form-control" />
+                <span asp-validation-for="secenek3C" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek3D" class="control-label"></label>
+                <input asp-for="secenek3D" class="form-control" />
+                <span asp-validation-for="secenek3D" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cevap3" class="control-label"></label>
+                <input asp-for="Cevap3" class="form-control" />
+                <span asp-validation-for="Cevap3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soru4" class="control-label"></label>
+                <input asp-for="soru4" class="form-control" />
+                <span asp-validation-for="soru4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek4A" class="control-label"></label>
+                <input asp-for="secenek4A" class="form-control" />
+                <span asp-validation-for="secenek4A" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek4B" class="control-label"></label>
+                <input asp-for="secenek4B" class="form-control" />
+                <span asp-validation-for="secenek4B" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek4C" class="control-label"></label>
+                <input asp-for="secenek4C" class="form-control" />
+                <span asp-validation-for="secenek4C" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="secenek4D" class="control-label"></label>
+                <input asp-for="secenek4D" class="form-control" />
+                <span asp-validation-for="secenek4D" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cevap4" class="control-label"></label>
+                <input asp-for="Cevap4" class="form-control" />
+                <span asp-validation-for="Cevap4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="baslik" class="control-label"></label>
+                <input asp-for="baslik" class="form-control" />
+                <span asp-validation-for="baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tarih" class="control-label"></label>
+                <input asp-for="tarih" class="form-control" />
+                <span asp-validation-for="tarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

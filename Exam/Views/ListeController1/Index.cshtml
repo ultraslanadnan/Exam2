@@ -1,0 +1,258 @@
+﻿@model Exam.Models.yazilar
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    var x = document.getElementById("Submit1");
+    function selectFunction() {
+        $("#form12").submit();
+    }
+</script>
+
+<script type="text/javascript">
+    function checkedCevaplar(item) {
+        var cvp1 = document.getElementById("cvp1").selectedIndex;
+        var cvp2 = document.getElementById("cvp2").selectedIndex;
+        var cvp3 = document.getElementById("cvp3").selectedIndex;
+        var cvp4 = document.getElementById("cvp4").selectedIndex;
+
+        //alert(cvp1 + " " + cvp2 + " " + cvp3 + " " + cvp4);
+
+
+
+        //alert(cevap1 + " " + cevap2 + " " + cevap3+" " + cevap4);
+
+        if (cvp1 == "0" || cvp2 == "0" || cvp3 == "0" || cvp4 == "0") {
+
+            swal("Tüm Soruların Cevaplarını Seçmediniz", {
+                icon: "info",
+
+                //timer: 3000,
+
+            });
+        }
+        else {
+            $("#form12").submit();
+        }
+    }
+</script>
+@if (ViewBag.success != null)
+{
+    <script>
+        swal("Sınav Başarıyla Kaydedildi", {
+            icon: "success",
+
+            //timer: 3000,
+
+        });
+    </script>
+
+}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1 justify-content-center">
+
+
+                @*@foreach (var yazi in ViewBag.yazilars)
+                    {
+                        @yazi.baslik
+                    }*@
+
+
+            </div>
+        </div>
+    </div>
+    <form asp-action="Index" id="form12">
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1">
+                    <div class="row">
+                        <div class="col-12" style="padding:0; margin-top:15px;">
+                            <select onchange="selectFunction();" asp-for="id"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(@ViewBag.listofYazilar,"id", "baslik"))">
+                            </select>
+                        </div>
+                        @*<div class="col-2" style="width:100%; padding:0;">
+                                <input id="Submit1" class="form-control"  type="submit" value="submit" style="display:inline-block; float:left;" />
+                            </div>*@
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    <div class="alert-danger form-control" asp-validation-summary="ModelOnly"></div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1 " id="icerik" style="display:none; width:100%; margin-top:10px; margin-bottom:10px; padding:0;">
+                    <label class="form-control" style="height:auto !important;"> @ViewBag.SelectedValue</label>
+                    @if (ViewBag.SelectedValue != null)
+                    {
+                        <script>
+                            var icerik = document.getElementById("icerik");
+                            icerik.style.display = "Block";
+                        </script>
+
+
+                    }
+                    @*<select class="form-control" asp-for="id"  asp-items="@(new SelectList(@ViewBag.Selectedaciklama,"id", "aciklama"))"  ></select>*@
+
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    @Model.
+                    <span style="display:inline; float:left;" class="form-control">Soru 1</span> <textarea name="soru1" type="text" class="form-control" style="display:block; float:left; " name="name" rows="5" value=""></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">A)</span> <textarea name="secenek1A" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">B)</span> <textarea name="secenek1B" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">C)</span> <textarea name="secenek1C" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">D)</span> <textarea name="secenek1D" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3" style="margin-top:10px;">
+                            <select id="cvp1" name="Cevap1" class="form-control">
+                                <option value="0">Dogru Cevap Secin</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    @Model.
+                    <span style="display:inline; float:left;" class="form-control">Soru 2</span> <textarea name="soru2" type="text" class="form-control" style="display:block; float:left; " name="name" rows="5" value=""></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">A)</span> <textarea name="secenek2A" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">B)</span> <textarea name="secenek2B" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">C)</span> <textarea name="secenek2C" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">D)</span> <textarea name="secenek2D" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3" style="margin-top:10px;">
+                            <select id="cvp2" name="Cevap2" class="form-control">
+                                <option value="0">Dogru Cevap Secin</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    @Model.
+                    <span style="display:inline; float:left;" class="form-control">Soru 3</span> <textarea name="soru3" type="text" class="form-control" style="display:block; float:left; " name="name" rows="5" value=""></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">A)</span> <textarea name="secenek3A" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">B)</span> <textarea name="secenek3B" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">C)</span> <textarea name="secenek3C" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">D)</span> <textarea name="secenek3D" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3" style="margin-top:10px;">
+                            <select id="cvp3" name="Cevap3" class="form-control">
+                                <option value="0">Dogru Cevap Secin</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    @Model.
+                    <span style="display:inline; float:left;" class="form-control">Soru 4</span> <textarea name="soru4" type="text" class="form-control" style="display:block; float:left; " name="name" rows="5" value=""></textarea>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="padding:0;">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">A)</span> <textarea name="secenek4A" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">B)</span> <textarea name="secenek4B" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">C)</span> <textarea name="secenek4C" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                        <div class="col-6">
+                            <span style="display:inline; float:left;" class="form-control">D)</span> <textarea name="secenek4D" type="text" class="form-control" style="display:block; float:left; " name="name" rows="3" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3" style="margin-top:10px;">
+                            <select id="cvp4" name="Cevap4" class="form-control">
+                                <option value="0">Dogru Cevap Secin</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-11 col-lg-11 offset-lg-1 ofsset-md-1" style="margin-top:15px;">
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <a id="Subm" class="form-control" style="cursor:pointer;" onclick="checkedCevaplar(this);">SINAV OLUŞTUR</a>
+                        </div>
+                        <div class="col-3">
+                            <input  class="form-control"  value="SINAVLAR" style="cursor:pointer; display:block;" type="submit" asp-controller="sinavlar" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </form>
+

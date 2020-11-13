@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Exam.Models.sinavlar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>SINAVLAR</h1>
+<script>
+      function selectFunction() {
+        $("#form12").submit();
+    }
+</script>
+<form id="from12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sınav ID</th>
+                <th>Başlık</th>
+                <th>Tarih</th>
+                <th>
+                    <input class="form-control" value="YENİ SINAV OLUŞTUR" style="cursor:pointer; display:block;" type="submit" asp-controller="Listecontroller1" />
+
+                </th>
+            </tr>
+        </thead>
+        <tbody  style="cursor:pointer;">
+            @foreach (var item in Model)
+            {
+           
+            <tr>
+
+
+
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.sinavid)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tarih)
+                </td>
+                <td>
+                    <a class="btn btn-info " asp-action="sinavgiris" asp-route-id="@item.sinavid">Sınava Gir</a>
+                    <a class="btn btn-danger " asp-action="Delete" asp-route-id="@item.sinavid">Sil</a>
+                </td>
+            </tr>
+          
+            }
+        </tbody>
+    </table>
+</form>
